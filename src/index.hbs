@@ -9,7 +9,7 @@
     <meta name="description" content="Responsive Resume Template">
     <meta name="author" content="Xiaoying Riley at 3rd Wave Media">
 
-    <link rel="shortcut icon" href="favicon.ico"> 
+    <link rel="shortcut icon" href="favicon.ico">
     <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,900" rel="stylesheet">
     <link id="theme-style" rel="stylesheet" href="assets/css/pillar-1.css">
 
@@ -17,8 +17,11 @@
   </head>
   <body>
     <article class="resume-wrapper text-center position-relative">
-	    <div class="resume-wrapper-inner mx-auto text-start bg-white shadow-lg">
+      <div class="resume-wrapper-inner mx-auto text-start bg-white shadow-lg">
         {{> header}}
+        <div class="resume-body p-5">
+          {{> summary}}
+        </div>
       </div>
     </article>
   </body>
