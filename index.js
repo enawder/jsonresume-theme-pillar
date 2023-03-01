@@ -3,7 +3,9 @@ var path = require('path');
 var Handlebars = require("handlebars");
 
 function render(resume) {
-	var css = fs.readFileSync(__dirname + "/src/pillar-theme/assets/css/pillar-1.css", "utf-8");
+  var colorscheme = resume.meta.colorscheme;
+	var css = fs.readFileSync(
+    __dirname + "/src/pillar-theme/assets/css/" + colorscheme + ".css", "utf-8");
 	var tpl = fs.readFileSync(__dirname + "/src/index.hbs", "utf-8");
 	var partialsDir = path.join(__dirname, '/src/partials');
 	var filenames = fs.readdirSync(partialsDir);
