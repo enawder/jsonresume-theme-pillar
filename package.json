@@ -1,0 +1,46 @@
+{
+  "name": "jsonresume-theme-pillar",
+  "version": "0.0.1",
+  "description": "Pillar theme for JSON Resume standard",
+  "main": "index.js",
+  "scripts": {
+    "build": "npm-run-all copy export",
+    "copy": "npm-run-all copy:*",
+    "copy:assets": "copyfiles -u 2 src/pillar-theme/assets/**/* public/",
+    "export": "npm-run-all export:*",
+    "export:html": "resume export -r resume.json -f html -t . public/index.html",
+    "sync": "browser-sync start --server public --files 'public/**/*'",
+    "watch": "npm-run-all --parallel watch:*",
+    "watch:assets": "onchange 'src/**/assets/**/*' -- npm run copy:assets",
+    "watch:templates": "onchange 'src/**/*.hbs' -- npm run export:html",
+    "dev": "npm run build && npm-run-all --parallel watch sync"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/enawder/jsonresume-theme-pillar.git"
+  },
+  "keywords": [
+    "json",
+    "resume",
+    "json-resume",
+    "theme",
+    "cv",
+    "curriculum-vitae"
+  ],
+  "author": "enawder",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/enawder/jsonresume-theme-pillar/issues"
+  },
+  "homepage": "https://github.com/enawder/jsonresume-theme-pillar#readme",
+  "dependencies": {
+    "handlebars": "^4.7.7"
+  },
+  "devDependencies": {
+    "browser-sync": "^2.28.1",
+    "copyfiles": "^2.4.1",
+    "npm-run-all": "^4.1.5",
+    "onchange": "^7.1.0",
+    "resume-cli": "^3.0.8"
+  }
+}

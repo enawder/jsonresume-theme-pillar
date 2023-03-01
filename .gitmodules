@@ -1,0 +1,3 @@
+[submodule "src/pillar-theme"]
+	path = src/pillar-theme
+	url = ssh://git@github.com/xriley/pillar-theme.git
