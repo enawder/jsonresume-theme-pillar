@@ -1,6 +1,9 @@
 var fs = require("fs");
 var path = require('path');
 var Handlebars = require("handlebars");
+var helpers = require("handlebars-helpers")({
+  handlebars: Handlebars
+});
 
 function render(resume) {
   var colorscheme = resume.meta.colorscheme;
