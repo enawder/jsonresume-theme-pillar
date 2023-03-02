@@ -6,7 +6,7 @@
   "scripts": {
     "build": "npm-run-all copy export",
     "copy": "npm-run-all copy:*",
-    "copy:assets": "copyfiles -u 2 src/pillar-theme/assets/**/* public/",
+    "copy:assets": "copyfiles -u 2 'src/pillar-theme/assets/**/*' public/",
     "export": "npm-run-all export:*",
     "export:html": "resume export -r resume.json -f html -t . public/index.html",
     "sync": "browser-sync start --server public --files 'public/**/*'",
