@@ -5,11 +5,24 @@ var helpers = require("handlebars-helpers")({
   handlebars: Handlebars
 });
 
+function getTranslations() {
+  var translations = {};
+  const i18nPath = path.join(__dirname, "/src/i18n")
+  const files = fs.readdirSync(i18nPath)
+    .filter(file => path.extname(file) === ".json")
+  files.forEach(file => {
+    const data = fs.readFileSync(path.join(i18nPath, file));
+    const language = path.parse(file).name;
+    translations[language] = JSON.parse(data);
+  })
+  return translations;
+}
+
 function render(resume) {
   var colorscheme = resume.meta.colorscheme;
   var css = fs.readFileSync(
     __dirname + "/src/pillar-theme/assets/css/" + colorscheme + ".css", "utf-8");
-  var tpl = fs.readFileSync(__dirname + "/src/index.hbs", "utf-8");
+  var template = fs.readFileSync(__dirname + "/src/index.hbs", "utf-8");
   var partialsDir = path.join(__dirname, '/src/partials');
   var filenames = fs.readdirSync(partialsDir);
 
@@ -24,10 +37,13 @@ function render(resume) {
 
     Handlebars.registerPartial(name, template);
   });
-  return Handlebars.compile(tpl)({
+  var options = {
     css: css,
-    resume: resume
-  });
+    resume: resume,
+    language: resume.meta.language || "en"
+  }
+  Object.assign(options, getTranslations())
+  return Handlebars.compile(template)(options);
 }
 
 module.exports = {
