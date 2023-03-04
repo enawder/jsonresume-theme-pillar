@@ -11,7 +11,7 @@
             <div class="resume-company-name ms-auto">{{this.name}}</div>
           </div>
           <div class="resume-position-time">
-            {{this.startDate}} &#8211 {{#with ..}}{{default this.endDate (i18n "present")}}{{/with}}
+            {{this.startDate}} &#8211 {{#with ..}}{{default ../this.endDate (i18n "present")}}{{/with}}
           </div>
         </div>
         <div class="resume-timeline-item-desc">
