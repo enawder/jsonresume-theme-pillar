@@ -1,8 +1,10 @@
 <header class="resume-header pt-4 pt-md-0">
   <div class="row">
+    {{#if resume.basics.image}}
     <div class="col-block col-md-auto resume-picture-holder text-center text-md-start">
-      <img class="picture" src="assets/images/profile.jpg" alt="">
+      <img class="picture" src="assets/images/{{resume.basics.image}}" alt="">
     </div>
+    {{/if}}
     <div class="col">
       <div class="row p-4 justify-content-center justify-content-md-between">
         <div class="primary-info col-auto">
