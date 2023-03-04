@@ -1,0 +1,16 @@
+{{#if resume.awards}}
+<section class="resume-section reference-section mb-5">
+  <h2 class="resume-section-title text-uppercase fw-bold pb-3 mb-3">{{i18n "awards"}}</h2>
+  <div class="resume-section-content">
+    <ul class="list-unstyled resume-awards-list">
+      {{#each resume.awards}}
+      <li class="mb-2 ps-4 position-relative">
+        <i class="resume-award-icon fas fa-trophy position-absolute" data-fa-transform="shrink-2"></i>
+        <div class="resume-award-name">{{this.title}}</div>
+        <div class="resume-award-desc">{{this.summary}}</div>
+      </li>
+      {{/each}}
+    </ul>
+  </div>
+</section>
+{{/if}}
