@@ -1,12 +1,12 @@
 {{#if resume.languages}}
 <section class="resume-section language-section mb-5">
-  <h2 class="resume-section-title text-uppercase font-weight-bold pb-3 mb-3">{{i18n "languages"}}</h2>
+  <h2 class="resume-section-title text-uppercase fw-bold pb-3 mb-3">{{i18n "languages"}}</h2>
   <div class="resume-section-content">
     <ul class="list-unstyled resume-lang-list">
       {{#each resume.languages}}
       <li class="mb-2">
-        <span class="resume-lang-name font-weight-bold">{{this.language}}</span>
-        <small class="text-muted font-weight-normal">({{this.fluency}})</small>
+        <span class="resume-lang-name fw-bold">{{this.language}}</span>
+        <small class="text-muted fw-normal">({{this.fluency}})</small>
       </li>
       {{/each}}
     </ul>

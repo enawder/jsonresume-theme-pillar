@@ -1,11 +1,11 @@
 {{#if resume.education}}
 <section class="resume-section education-section mb-5">
-  <h2 class="resume-section-title text-uppercase font-weight-bold pb-3 mb-3">{{i18n "education"}}</h2>
+  <h2 class="resume-section-title text-uppercase fw-bold pb-3 mb-3">{{i18n "education"}}</h2>
   <div class="resume-section-content">
     <ul class="list-unstyled">
       {{#each resume.education}}
       <li class="mb-2">
-        <div class="resume-degree font-weight-bold">{{this.studyType}} {{this.area}}</div>
+        <div class="resume-degree fw-bold">{{this.studyType}} {{this.area}}</div>
         <div class="resume-degree-org">{{this.institution}}</div>
         <div class="resume-degree-time">
           {{this.startDate}} &#8211 {{#with ..}}{{default ../this.endDate (i18n "present")}}{{/with}}

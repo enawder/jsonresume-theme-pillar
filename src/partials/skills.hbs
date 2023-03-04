@@ -1,10 +1,10 @@
 {{#if resume.skills}}
 <section class="resume-section skills-section mb-5">
-  <h2 class="resume-section-title text-uppercase font-weight-bold pb-3 mb-3">{{i18n "skills"}}</h2>
+  <h2 class="resume-section-title text-uppercase fw-bold pb-3 mb-3">{{i18n "skills"}}</h2>
   <div class="resume-section-content">
     {{#each resume.skills}}
     <div class="resume-skill-item">
-      <h4 class="resume-skills-cat font-weight-bold">{{this.name}}</h4>
+      <h4 class="resume-skills-cat fw-bold">{{this.name}}</h4>
       <div class="progress resume-progress">
         <div class="progress-bar theme-progress-bar-dark" role="progressbar"
           style="width: {{skillLevelToPercent this.level}}%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
