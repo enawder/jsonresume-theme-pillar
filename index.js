@@ -18,6 +18,21 @@ function getTranslations() {
   return translations;
 }
 
+function skillLevelToPercentHelper(level) {
+  switch (level.toLowerCase()) {
+    case "master":
+      return 100;
+    case "advanced":
+      return 75;
+    case "intermediate":
+      return 50;
+    case "beginner":
+      return 25;
+    default:
+      return 0;
+  }
+}
+
 function render(resume) {
   var colorscheme = resume.meta.colorscheme;
   var css = fs.readFileSync(
@@ -37,6 +52,7 @@ function render(resume) {
 
     Handlebars.registerPartial(name, template);
   });
+  Handlebars.registerHelper("skillLevelToPercent", skillLevelToPercentHelper)
   var options = {
     css: css,
     resume: resume,
