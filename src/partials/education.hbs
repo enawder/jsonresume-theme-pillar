@@ -6,7 +6,9 @@
       {{#each resume.education}}
       <li class="mb-2">
         <div class="resume-degree fw-bold">{{this.studyType}} {{this.area}}</div>
-        <div class="resume-degree-org">{{this.institution}}</div>
+        <div class="resume-degree-org">
+          <a class="text-link no-text-decoration" href="{{this.url}}">{{this.institution}}</a>
+        </div>
         <div class="resume-degree-time">
           {{this.startDate}} &#8211 {{#with ..}}{{default ../this.endDate (i18n "present")}}{{/with}}
         </div>

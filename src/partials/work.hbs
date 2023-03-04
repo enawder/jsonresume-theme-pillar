@@ -8,7 +8,9 @@
         <div class="resume-timeline-item-header mb-2">
           <div class="d-flex flex-column flex-md-row">
             <h3 class="resume-position-title fw-bold mb-1">{{this.position}}</h3>
-            <div class="resume-company-name ms-auto">{{this.name}}</div>
+            <div class="resume-company-name ms-auto">
+              <a class="text-link no-text-decoration" href="{{this.url}}">{{this.name}}</a>
+            </div>
           </div>
           <div class="resume-position-time">
             {{this.startDate}} &#8211 {{#with ..}}{{default ../this.endDate (i18n "present")}}{{/with}}
