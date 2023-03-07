@@ -1,0 +1,35 @@
+@use "sass:map";
+
+@page:first {
+  size: A4;
+  margin: 0;
+  margin-bottom: 10mm;
+  padding: 0;
+}
+
+@page {
+  size: A4;
+  margin: 0;
+  margin-top: 10mm;
+  margin-bottom: 10mm;
+  padding: 0;
+}
+
+@media print {
+  html, body {
+    background: none;
+  }
+
+  #resume {
+    background: none;
+  }
+
+  // FIXME: Considering the dimensions of the A4 format, printing using such
+  // format uses the responsive small mobile version instead of the desktop
+  // version. This is a workaround to still print the desktop version when
+  // using A4.
+  @if $enable-grid-classes {
+    $breakPoints: (lg: map.get($grid-breakpoints, sm));
+    @include make-grid-columns($grid-columns, $grid-gutter-width, $breakPoints);
+  }
+}

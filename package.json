@@ -4,15 +4,18 @@
   "description": "Pillar theme for JSON Resume standard",
   "main": "index.js",
   "scripts": {
-    "build": "npm-run-all copy export",
+    "build": "npm-run-all scss copy export",
+    "scss": "sass src/assets/scss:public/assets/css",
     "copy": "npm-run-all copy:*",
-    "copy:assets": "copyfiles -u 2 'src/pillar-theme/assets/**/*' public/",
+    "copy:theme": "copyfiles -u 2 'src/pillar-theme/assets/**/*' -e '**/scss/**/*' public/",
     "export": "npm-run-all export:*",
     "export:html": "resume export -r resume.json -f html -t . public/index.html",
+    "export:pdf": "node src/js/html2pdf.js",
     "sync": "browser-sync start --server public --files 'public/**/*'",
     "watch": "npm-run-all --parallel watch:*",
-    "watch:assets": "onchange 'src/**/assets/**/*' -- npm run copy:assets",
+    "watch:scss": "sass --watch src/assets/scss:public/assets/css",
     "watch:templates": "onchange 'src/**/*.hbs' -- npm run export:html",
+    "watch:theme": "onchange 'src/pillar-theme/assets/**/*' -- npm run copy:theme",
     "dev": "npm run build && npm-run-all --parallel watch sync"
   },
   "repository": {
@@ -42,6 +45,8 @@
     "handlebars-helpers": "^0.10.0",
     "npm-run-all": "^4.1.5",
     "onchange": "^7.1.0",
-    "resume-cli": "^3.0.8"
+    "puppeteer": "^19.7.2",
+    "resume-cli": "^3.0.8",
+    "sass": "^1.58.3"
   }
 }
