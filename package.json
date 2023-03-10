@@ -1,6 +1,6 @@
 {
   "name": "jsonresume-theme-pillar",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Pillar theme for JSON Resume standard",
   "main": "index.js",
   "scripts": {
