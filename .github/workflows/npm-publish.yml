@@ -1,0 +1,37 @@
+name: Publish npm package
+on:
+  push:
+    branches:
+      - master
+jobs:
+  version-check:
+    runs-on: ubuntu-latest
+    outputs:
+      changed: ${{steps.version-check.outputs.changed}}
+      version: ${{steps.version-check.outputs.version}}
+      commit: ${{steps.version-check.outputs.commit}}
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 19
+      - id: version-check
+        uses: EndBug/version-check@v2
+        with:
+          diff-search: true
+
+  create-tag:
+    needs:
+      - version-check
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/github-script@v6
+        with:
+          github-token: ${{secrets.GITHUB_TOKEN}}
+          script: |
+            github.rest.git.createRef({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              ref: "refs/tags/v${{needs.version-check.outputs.version}}",
+              sha: "${{needs.version-check.outputs.commit}}"
+            })
