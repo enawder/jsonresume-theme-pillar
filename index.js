@@ -54,7 +54,7 @@ function render(resume) {
   });
   Handlebars.registerHelper("skillLevelToPercent", skillLevelToPercentHelper)
   var options = {
-    css: css,
+    style: css,
     resume: resume,
     language: resume.meta.language || "en"
   }

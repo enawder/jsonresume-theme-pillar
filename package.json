@@ -13,7 +13,6 @@
     "scss": "sass --no-source-map src/assets/scss:public/assets/css",
     "copy": "npm-run-all copy:*",
     "copy:css": "copyfiles -u 1 'src/assets/css/**/*' public/",
-    "copy:theme": "copyfiles -u 2 'src/pillar-theme/assets/**/*' -e '**/scss/**/*' public/",
     "export": "npm-run-all export:*",
     "export:html": "resume export -r resume.yaml -f html -t . public/index.html",
     "export:pdf": "node src/js/html2pdf.js",
@@ -22,7 +21,6 @@
     "watch:css": "onchange 'src/assets/css/**/*' -- npm run copy:css",
     "watch:scss": "sass --no-source-map --watch src/assets/scss:public/assets/css",
     "watch:templates": "onchange 'resume.yaml' 'src/**/*.hbs' -- npm run export:html",
-    "watch:theme": "onchange 'src/pillar-theme/assets/**/*' -- npm run copy:theme",
     "dev": "npm run build && npm-run-all --parallel watch sync"
   },
   "repository": {
