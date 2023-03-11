@@ -36,7 +36,7 @@ function skillLevelToPercentHelper(level) {
 function render(resume) {
   var colorscheme = resume.meta.colorscheme;
   var css = fs.readFileSync(
-    __dirname + "/src/pillar-theme/assets/css/" + colorscheme + ".css", "utf-8");
+    __dirname + "/public/assets/css/" + colorscheme + ".css", "utf-8");
   var template = fs.readFileSync(__dirname + "/src/index.hbs", "utf-8");
   var partialsDir = path.join(__dirname, '/src/partials');
   var filenames = fs.readdirSync(partialsDir);

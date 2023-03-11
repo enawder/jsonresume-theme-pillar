@@ -3,6 +3,11 @@
   "version": "0.0.1",
   "description": "Pillar theme for JSON Resume standard",
   "main": "index.js",
+  "files": [
+    "index.js",
+    "src/**/*",
+    "public/assets/**/*"
+  ],
   "scripts": {
     "build": "npm-run-all scss copy export",
     "scss": "sass --no-source-map src/assets/scss:public/assets/css",
