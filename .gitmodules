@@ -1,3 +1,3 @@
-[submodule "src/pillar-theme"]
-	path = src/pillar-theme
-	url = ssh://git@github.com/xriley/pillar-theme.git
+[submodule "vendor/pillar-theme"]
+	path = vendor/pillar-theme
+	url = git@github.com:xriley/pillar-theme.git

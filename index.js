@@ -1,12 +1,12 @@
-var fs = require("fs");
-var path = require('path');
-var Handlebars = require("handlebars");
-var helpers = require("handlebars-helpers")({
-  handlebars: Handlebars
+const fs = require("fs");
+const path = require("path");
+const handlebars = require("handlebars");
+const helpers = require("handlebars-helpers")({
+  handlebars: handlebars
 });
 
 function getTranslations() {
-  var translations = {};
+  let translations = {};
   const i18nPath = path.join(__dirname, "/src/i18n")
   const files = fs.readdirSync(i18nPath)
     .filter(file => path.extname(file) === ".json")
@@ -33,33 +33,46 @@ function skillLevelToPercentHelper(level) {
   }
 }
 
-function render(resume) {
-  var colorscheme = resume.meta.colorscheme;
-  var css = fs.readFileSync(
-    __dirname + "/public/assets/css/" + colorscheme + ".css", "utf-8");
-  var template = fs.readFileSync(__dirname + "/src/index.hbs", "utf-8");
-  var partialsDir = path.join(__dirname, '/src/partials');
-  var filenames = fs.readdirSync(partialsDir);
+function registerHelpers() {
+  handlebars.registerHelper("skillLevelToPercent", skillLevelToPercentHelper)
+}
 
+function registerPartials(partialsPath) {
+  const filenames = fs.readdirSync(partialsPath);
   filenames.forEach(function (filename) {
-    var matches = /^([^.]+).hbs$/.exec(filename);
+  const filenames = fs.readdirSync(partialsPath);
+    const matches = /^([^.]+).hbs$/.exec(filename);
     if (!matches) {
       return;
     }
-    var name = matches[1];
-    var filepath = path.join(partialsDir, filename)
-    var template = fs.readFileSync(filepath, 'utf8');
+    const name = matches[1];
+    const filepath = path.join(partialsPath, filename)
+    const partial = fs.readFileSync(filepath, "utf-8");
 
-    Handlebars.registerPartial(name, template);
+    handlebars.registerPartial(name, partial);
   });
-  Handlebars.registerHelper("skillLevelToPercent", skillLevelToPercentHelper)
-  var options = {
+}
+
+function render(resume) {
+  const colorscheme = resume.meta.colorscheme;
+  const css =
+    fs.readFileSync(
+      path.join(__dirname, "public", "assets", "css", colorscheme + ".css"),
+      "utf-8"
+    );
+  const viewsPath = path.join(__dirname, "src", "views");
+  const template = fs.readFileSync(path.join(viewsPath, "index.hbs"), "utf-8");
+  const partialsPath = path.join(viewsPath, "partials");
+
+  registerPartials(partialsPath);
+  registerHelpers();
+
+  return handlebars.compile(template)({
     style: css,
     resume: resume,
-    language: resume.meta.language || "en"
-  }
-  Object.assign(options, getTranslations())
-  return Handlebars.compile(template)(options);
+    language: resume.meta.language || "en",
+    ...getTranslations()
+  });
 }
 
 module.exports = {
