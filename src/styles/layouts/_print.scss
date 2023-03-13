@@ -1,4 +1,3 @@
-
 @use "sass:map";
 
 @page:first {
@@ -10,19 +9,28 @@
 
 @page {
   size: A4;
-  margin: 0;
-  margin-top: 10mm;
-  margin-bottom: 10mm;
+  margin: 10mm 0;
   padding: 0;
 }
 
 @media print {
   html, body {
+    padding: 0;
+    margin: 0;
     background: none;
   }
 
-  #resume {
+  .resume-wrapper,
+  .resume-wrapper-inner {
     background: none;
+    box-shadow: none !important;
+    margin: 0;
+    max-width: 100%;
+    padding: 0;
+  }
+
+  footer {
+    display: none;
   }
 
   // FIXME: Considering the dimensions of the A4 format, printing using such
