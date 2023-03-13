@@ -4,8 +4,10 @@ const path = require("path");
 (async () => {
   const browser = await puppeteer.launch();
   const page = await browser.newPage();
+  const env = process.env.ENV;
   await page.goto(
-    "file://" + path.join(process.cwd(), "public/index.html"), {
+    "file://" + path.join(process.cwd(),
+    path.join("public", env, "index.html")), {
       waitUntil: "load"
     })
 
@@ -19,7 +21,7 @@ const path = require("path");
   await page.emulateMediaType('print');
 
   const pdf = await page.pdf({
-    path: path.join(process.cwd(), 'public/resume.pdf'),
+    path: path.join(process.cwd(), "public", env, "resume.pdf"),
     format: "A4",
     margin: {
       top: 0,

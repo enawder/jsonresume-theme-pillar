@@ -54,10 +54,11 @@ function registerPartials(partialsPath) {
 }
 
 function render(resume) {
+  const env = process.env.ENV || "prod";
   const colorscheme = resume.meta.colorscheme;
   const css =
     fs.readFileSync(
-      path.join(__dirname, "public", "assets", "css", colorscheme + ".css"),
+      path.join(__dirname, "public", env, "assets", "css", colorscheme + ".css"),
       "utf-8"
     );
   const viewsPath = path.join(__dirname, "src", "views");
