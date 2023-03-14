@@ -63,9 +63,9 @@ function render(resume) {
     );
   const viewsPath = path.join(__dirname, "src", "views");
   const template = fs.readFileSync(path.join(viewsPath, "index.hbs"), "utf-8");
-  const partialsPath = path.join(viewsPath, "partials");
 
-  registerPartials(partialsPath);
+  registerPartials(path.join(viewsPath, "partials"));
+  registerPartials(path.join(viewsPath, "components"));
   registerHelpers();
 
   return handlebars.compile(template)({
