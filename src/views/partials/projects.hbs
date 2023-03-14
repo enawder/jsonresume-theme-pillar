@@ -1,0 +1,70 @@
+{{#if resume.projects}}
+<section class="resume-section experience-section mb-5">
+  <h2 class="resume-section-title text-uppercase fw-bold pb-3 mb-3">{{i18n "projects"}}</h2>
+  <div class="resume-section-content">
+    <div class="resume-section position-relative">
+    {{#each resume.projects}}
+      {{#if @last}}
+      <article class="resume-item position-relative">
+      {{else}}
+      <article class="resume-item position-relative pb-4">
+      {{/if}}
+        <div class="resume-item-header mb-2">
+          <div class="d-flex flex-column flex-md-row">
+            <h3 class="resume-position-title font-weight-bold mb-1">{{this.name}}</h3>
+            {{#if this.url}}
+            <div class="resume-company-name ms-auto">
+              <a class="text-link no-text-decoration" href="{{this.url}}">
+                {{~#with (urlParse this.url)}}
+                  {{~this.hostname}}
+                  {{~#unlessEq this.pathname "/"}}
+                    {{~this.pathname}}
+                  {{/unlessEq}}
+                {{/with}}
+              </a>
+            </div>
+            {{/if}}
+          </div>
+          <div class="resume-position-time">
+            {{this.startDate}} &#8211 {{#with ..}}{{default ../this.endDate (i18n "present")}}{{/with}}
+          </div>
+        </div>
+        <div class="resume-timeline-item-desc">
+          {{#if this.description}}
+          <p>{{this.description}}</p>
+          {{/if}}
+
+          {{#if this.highlights}}
+          <h4 class="resume-timeline-item-desc-heading fw-bold">
+            {{~#with ..}}
+              {{~i18n "achievements"}}
+            {{/with}}
+          </h4>
+          <ul>
+            {{#each this.highlights}}
+            <li>{{this}}</li>
+            {{/each}}
+          </ul>
+          {{/if}}
+
+          {{#if this.keywords}}
+          <h4 class="resume-timeline-item-desc-heading fw-bold">
+            {{~#with ..}}
+              {{~i18n "technologiesUsed"}}
+            {{/with}}
+          </h4>
+          <ul class="list-inline">
+            {{#each this.keywords}}
+            <li class="list-inline-item">
+              <span class="badge bg-secondary badge-pill">{{this}}</span>
+            </li>
+            {{/each}}
+          </ul>
+          {{/if}}
+        </div>
+      </article>
+    {{/each}}
+    </div>
+  </div>
+</section>
+{{/if}}
