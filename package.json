@@ -24,8 +24,10 @@
     "export": "npm-run-all export:html export:pdf",
     "sync": "browser-sync start --server public/dev --files 'public/dev/**/*'",
     "watch": "npm-run-all --parallel watch:*",
+    "watch:i18n": "onchange 'src/i18n/**/*' -- npm run export:dev",
+    "watch:resume": "onchange 'resume.yaml' -- npm run export:dev",
     "watch:scss": "onchange 'src/styles/**/*' -- npm-run-all scss:dev export:dev",
-    "watch:templates": "onchange 'resume.yaml' 'src/views/**/*.hbs' -- npm-run-all export:dev",
+    "watch:templates": "onchange 'src/views/**/*.hbs' -- npm run export:dev",
     "dev": "npm run build:dev && npm run export:dev && npm-run-all --parallel watch sync",
     "prod": "npm run build:prod && npm run export:prod"
   },
