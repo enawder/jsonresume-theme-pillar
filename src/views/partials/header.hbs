@@ -56,7 +56,12 @@
                 <span class="fa-container text-center me-2">
                   <i class="fab fa-{{lowercase this.network}} fa-fw"></i>
                 </span>
-                {{~this.username}}
+                {{~#with (urlParse this.url)}}
+                  {{~this.hostname}}
+                  {{~#unlessEq this.pathname "/"}}
+                    {{~this.pathname}}
+                  {{/unlessEq}}
+                {{/with}}
               </a>
             </li>
             {{/each}}
