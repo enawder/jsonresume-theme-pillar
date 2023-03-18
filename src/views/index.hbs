@@ -26,14 +26,32 @@
           {{> summary}}
           <div class="row">
             <div class="col-lg-9">
-              {{> work}}
+              {{> work anyItemBelow=resume.skills}}
               {{> projects}}
             </div>
             <div class="col-lg-3">
-              {{> skills}}
-              {{> education}}
-              {{> awards}}
-              {{> languages}}
+              {{> skills
+                anyItemBelow=(
+                  or resume.education
+                  resume.awards
+                  resume.languages
+                  resume.languages
+                )
+              }}
+              {{> education
+                anyItemBelow=(
+                  or resume.awards
+                  resume.languages
+                  resume.interestsi
+                )
+              }}
+              {{> awards
+                anyItemBelow=(
+                  or resume.languages
+                  resume.interests
+                )
+              }}
+              {{> languages anyItemBelow=resume.interests}}
               {{> interests}}
             </div>
           </div>

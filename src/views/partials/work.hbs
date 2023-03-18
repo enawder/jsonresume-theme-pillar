@@ -1,10 +1,18 @@
 {{#if resume.work}}
+{{#if anyItemBelow}}
 <section class="resume-section experience-section mb-5">
+{{else}}
+<section class="resume-section experience-section">
+{{/if}}
   <h2 class="resume-section-title text-uppercase fw-bold pb-3 mb-3">{{i18n "workExperience"}}</h2>
   <div class="resume-section-content">
     <div class="resume-timeline position-relative">
       {{#each resume.work}}
+      {{#if @last}}
+      <article class="resume-timeline-item position-relative">
+      {{else}}
       <article class="resume-timeline-item position-relative pb-5">
+      {{/if}}
         <div class="resume-timeline-item-header mb-2">
           <div class="d-flex flex-column flex-md-row">
             <h3 class="resume-position-title fw-bold mb-1">{{this.position}}</h3>

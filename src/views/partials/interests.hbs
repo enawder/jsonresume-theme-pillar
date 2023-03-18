@@ -1,5 +1,9 @@
 {{#if resume.interests}}
+{{#if anyItemBelow}}
 <section class="resume-section interests-section mb-5">
+{{else}}
+<section class="resume-section interests-section">
+{{/if}}
   <h2 class="resume-section-title text-uppercase fw-bold pb-3 mb-3">{{i18n "interests"}}</h2>
   <div class="resume-section-content">
     {{#each resume.interests}}

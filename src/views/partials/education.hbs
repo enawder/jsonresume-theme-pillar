@@ -1,5 +1,9 @@
 {{#if resume.education}}
+{{#if anyItemBelow}}
 <section class="resume-section education-section mb-5">
+{{else}}
+<section class="resume-section education-section">
+{{/if}}
   <h2 class="resume-section-title text-uppercase fw-bold pb-3 mb-3">{{i18n "education"}}</h2>
   <div class="resume-section-content">
     <ul class="list-unstyled">
