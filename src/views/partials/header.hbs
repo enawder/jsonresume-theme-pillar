@@ -29,17 +29,16 @@
               </a>
             </li>
             {{/if}}
-            {{#if resume.basics.location.region}}
+            {{#with resume.basics.location}}
+            {{#or this.address this.postalCode this.city this.region this.countryCode}}
             <li class="mb-2">
-              <a class="text-link" href="https://maps.google.com/?q={{resume.basics.location.region}}">
+              <a class="text-link" href="https://maps.google.com/?q={{escape (locationToString this)}}">
                 <i class="fas fa-location-dot fa-fw me-2" data-fa-transform="grow-3"></i>
-                {{~resume.basics.location.region}}
-                {{~#if resume.basics.location.countryCode~}}
-                  , {{resume.basics.location.countryCode}}
-                {{/if}}
+                {{~locationToString this}}
               </a>
             </li>
-            {{/if}}
+            {{/or}}
+            {{/with}}
           </ul>
         </div>
         {{#or resume.basics.profiles resume.meta.download.pdf resume.basics.url}}

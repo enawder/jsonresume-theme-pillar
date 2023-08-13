@@ -33,8 +33,19 @@ function skillLevelToPercentHelper(level) {
   }
 }
 
+function locationToStringHelper(loc) {
+  return [
+    loc.address || "",
+    loc.postalCode || "",
+    loc.city || "",
+    loc.region || "",
+    loc.countryCode || ""
+  ].filter(item => item).join(", ")
+}
+
 function registerHelpers() {
   handlebars.registerHelper("skillLevelToPercent", skillLevelToPercentHelper)
+  handlebars.registerHelper("locationToString", locationToStringHelper)
 }
 
 function registerPartials(partialsPath) {
