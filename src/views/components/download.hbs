@@ -1,5 +1,5 @@
-<a class="btn btn-secondary theme-btn-on-bg fw-bold download-btn"
-    download="cv-{{hyphenate (lowercase resume.basics.name)}}-{{hyphenate (lowercase resume.basics.label)}}.pdf"
+<a class="btn btn-secondary theme-btn-on-fg fw-bold download-btn h-100"
+   download="cv-{{hyphenate (lowercase resume.basics.name)}}-{{hyphenate (lowercase resume.basics.label)}}-{{default resume.meta.language 'en'}}.pdf"
     href="{{resume.meta.download.pdf}}">
   <i class="fa-solid fa-download me-2"></i>
   {{~i18n "downloadPdfVersion"}}

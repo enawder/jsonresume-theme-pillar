@@ -43,11 +43,18 @@
         </div>
         {{#or resume.basics.profiles resume.meta.download.pdf resume.basics.url}}
         <div class="secondary-info col-auto mt-2">
-          {{#if resume.meta.download.pdf}}
-          <div class="download-wrapper mb-3">
-            {{> download}}
+          <div class="row g-3 mb-3">
+            {{#if resume.meta.download.pdf}}
+            <div class="col-auto download-wrapper">
+              {{> download}}
+            </div>
+            {{/if}}
+            {{#if resume.meta.languages}}
+            <div class="col-auto">
+              {{> language-selector}}
+            </div>
+            {{/if}}
           </div>
-          {{/if}}
           <ul class="resume-social list-unstyled">
             {{#each resume.basics.profiles}}
             <li class="mb-3">

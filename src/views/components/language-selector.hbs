@@ -1,0 +1,9 @@
+<select id="language-selector" class="form-select" aria-label="Select language">
+  {{#each resume.meta.languages}}
+  {{#eq this ../resume.meta.language}}
+  <option value="{{this}}" selected>{{languageFromLocale this}}</option>
+  {{else}}
+  <option value="{{this}}">{{languageFromLocale this}}</option>
+  {{/eq}}
+  {{/each}}
+</select>

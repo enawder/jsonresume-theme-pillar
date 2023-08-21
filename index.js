@@ -43,9 +43,20 @@ function locationToStringHelper(loc) {
   ].filter(item => item).join(", ")
 }
 
+function languageFromLocaleHelper(locale) {
+    const languages = {
+      'en': 'English',
+      'fr': 'Français'
+    };
+    if (!languages.hasOwnProperty(locale))
+      throw new Error("Unknown locale ${locale} !");
+    return languages[locale];
+}
+
 function registerHelpers() {
   handlebars.registerHelper("skillLevelToPercent", skillLevelToPercentHelper)
   handlebars.registerHelper("locationToString", locationToStringHelper)
+  handlebars.registerHelper("languageFromLocale", languageFromLocaleHelper)
 }
 
 function registerPartials(partialsPath) {
