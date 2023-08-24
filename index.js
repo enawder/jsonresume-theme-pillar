@@ -91,8 +91,9 @@ function render(resume) {
   registerHelpers();
 
   return handlebars.compile(template)({
-    style: css,
     resume: resume,
+    style: css,
+    scripts: resume.meta.scripts || [],
     language: resume.meta.language || "en",
     ...getTranslations()
   });

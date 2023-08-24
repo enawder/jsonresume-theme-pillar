@@ -22,6 +22,10 @@
 
     <script defer src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/js/all.min.js"></script>
 
+    {{#each resume.meta.scripts}}
+    <script defer type="text/javascript" src="{{this}}"></script>
+    {{/each}}
+
     <style type="text/css">
       {{{style}}}
     </style>
