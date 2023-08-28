@@ -14,7 +14,8 @@
           <a class="text-link no-text-decoration" href="{{this.url}}">{{this.institution}}</a>
         </div>
         <div class="resume-degree-time">
-          {{this.startDate}} &#8211 {{#with ..}}{{default ../this.endDate (i18n "present")}}{{/with}}
+          {{~#if this.startDate}}{{this.startDate}} &#8211 {{/if}}
+          {{~#with ..}}{{default ../this.endDate (i18n "present")}}{{/with~}}
         </div>
       </li>
       {{/each}}
