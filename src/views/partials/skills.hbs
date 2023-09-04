@@ -11,7 +11,7 @@
       <h4 class="resume-skills-cat fw-bold">{{this.name}}</h4>
       <div class="progress resume-progress">
         <div class="progress-bar theme-progress-bar-dark" role="progressbar"
-          style="width: {{skillLevelToPercent this.level}}%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
+          style="width: {{skillLevelToPercent this.level}}%" aria-valuenow="{{skillLevelToPercent this.level}}" aria-valuemin="0" aria-valuemax="100">
         </div>
       </div>
       {{#if this.keywords}}

@@ -19,18 +19,7 @@ function getTranslations() {
 }
 
 function skillLevelToPercentHelper(level) {
-  switch (level.toLowerCase()) {
-    case "master":
-      return 100;
-    case "advanced":
-      return 75;
-    case "intermediate":
-      return 50;
-    case "beginner":
-      return 25;
-    default:
-      return 0;
-  }
+  return Math.min(Math.max(level, 0), 100)
 }
 
 function locationToStringHelper(loc) {
